@@ -14,15 +14,37 @@ import 'package:whatsapp/Onboarding/OnBoardingModell.dart';
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image(
-          fit:  BoxFit.fitHeight,
-          image: ExactAssetImage( onBoardingModell.image,
+        Container(
+          height: 400,
+          
+          child: Image(
+            fit:  BoxFit.fitHeight,
+            image: ExactAssetImage( onBoardingModell.image,
 
 
+            ),
           ),
         ),
-        Text(onBoardingModell.title),
-        Text(onBoardingModell.description),
+        Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Text(onBoardingModell.title,
+          style: TextStyle(
+            color: Color.fromRGBO(26,183, 252, 1,),
+            fontSize:30,
+            fontWeight: FontWeight.bold,
+          ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left:30,right: 30),
+          child: Text(onBoardingModell.description,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Color.fromRGBO(224,225, 227, 1,),
+              fontSize:18,
+              fontWeight: FontWeight.bold,
+            ),),
+        ),
       ],
     );
   }

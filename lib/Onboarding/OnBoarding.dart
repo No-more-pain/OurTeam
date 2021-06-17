@@ -11,62 +11,72 @@ class _OnBoardingState extends State<OnBoarding> {
   int currentindex = 0;
   List<OnBoardingModell> screens = [
     OnBoardingModell(
-        title: '', image: 'Assets/images/chat.png', description: ''),
+        title: 'Messages', image: 'Assets/images/chat.webp', description: 'which allows designers to consider the form of a webpage or publication, '),
     OnBoardingModell(
-        title: '', image: 'Assets/images/chat-2.png', description: ''),
+        title: 'Ideas', image: 'Assets/images/chat-1.webp', description: 'which allows designers to consider the form of a webpage or publication, '),
     OnBoardingModell(
-        title: '', image: 'Assets/images/chat-3.png', description: ''),
+        title: 'Planing', image: 'Assets/images/chat-2.webp', description: 'which allows designers to consider the form of a webpage or publication, '),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Flexible(
-          child: Container(
+    return Container(
+      color: Color.fromRGBO(255, 255, 255, 1),
+      child: Column(
+        children: [
+          Flexible(
+            child: Container(
+              
+              child: PageView.builder(
+                onPageChanged: (index) {
+                  setState(() {
+                    currentindex = index;
+                  });
+                },
+                itemCount: screens.length,
+                itemBuilder: (BuildContext context, int position) {
+                  return Container(
+                    
 
-            child: PageView.builder(
-              onPageChanged: (index){
-                setState(() {
-                  currentindex = index;
-                });
-              },
-
-              itemCount: screens.length,
-              itemBuilder: (BuildContext context, int position) {
-                return Container(
-                  height: 400,
-                    child: SingleOnboardingPage(screens[position]));
-              },
+                      child: SingleOnboardingPage(screens[position]));
+                },
+              ),
             ),
           ),
-        ),
-
-
-        Row(
-          children: _drawdots(screens.length),
-
-
-
-        ),
-        SizedBox(height: 200,),
-      ],
+          Transform.translate(
+            offset: Offset(100,100),
+            child: Row(
+              children: _drawdots(screens.length),
+            ),
+          ),
+          SizedBox(
+            height: 200,
+          ),
+        ],
+      ),
     );
   }
 
-  List<Widget> _drawdots(int qty){
+  List<Widget> _drawdots(int qty) {
     List<Widget> dots = [];
 
-    for (int i = 0 ; i < qty ; i++){
+    for (int i = 0; i < qty; i++) {
       dots.add(
-        Container(margin: EdgeInsets.only(left: 30),
-          height: 20,width: 20,
-            color: (i == currentindex ) ? Colors.orange : Colors.white),
+        Container(
+          margin: EdgeInsets.only(left: 30),
+            width: (i == currentindex ? 40 : 10),
+            height: (i == currentindex )? 10 : 10,
+            decoration: BoxDecoration(
+                borderRadius: (i== currentindex ) ? BorderRadius.circular(20):BorderRadius.circular(40),
+                color: (i == currentindex) ? Color.fromRGBO(26,183, 252, 1) : Color.fromRGBO(147, 166, 170, 1),
+                 
+
+            
+           ),
+        )
       );
     }
     return dots;
-
-
+    
   }
-
 }
