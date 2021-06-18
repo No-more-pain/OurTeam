@@ -7,6 +7,9 @@ class OnBoarding extends StatefulWidget {
   _OnBoardingState createState() => _OnBoardingState();
 }
 
+
+
+
 class _OnBoardingState extends State<OnBoarding> {
   int currentindex = 0;
   List<OnBoardingModell> screens = [
@@ -58,6 +61,7 @@ class _OnBoardingState extends State<OnBoarding> {
           SizedBox(
             height: 200,
           ),
+          Container()
         ],
       ),
     );
